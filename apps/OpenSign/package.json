@@ -88,6 +88,7 @@
     "build-win": "npm run version-win && vite build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "check:i18n": "node scripts/check-i18n-parity.cjs",
     "release": "standard-version",
     "commit": "cz"
   },
