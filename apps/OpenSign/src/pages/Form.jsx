@@ -70,7 +70,7 @@ const Forms = (props) => {
     file: "",
     remindOnceInEvery: 5,
     autoreminder: false,
-    IsEnableOTP: "false",
+    IsEnableOTP: "true",
     IsTourEnabled: "false",
     NotifyOnSignatures: "",
     Bcc: [],
@@ -445,7 +445,7 @@ const Forms = (props) => {
           object.set("PenColors", selectedColors);
 
             object.set("AllowModifications", false);
-            object.set("IsEnableOTP", false);
+            object.set("IsEnableOTP", true);
             if (formData.NotifyOnSignatures !== undefined) {
               object.set("NotifyOnSignatures", formData.NotifyOnSignatures);
             }
@@ -523,7 +523,7 @@ const Forms = (props) => {
             NotifyOnSignatures: notifySign,
             remindOnceInEvery: 5,
             autoreminder: false,
-            IsEnableOTP: "false",
+            IsEnableOTP: "true",
             IsTourEnabled: istourenabled,
             RedirectUrl: "",
             AllowModifications: false,
@@ -616,7 +616,7 @@ const Forms = (props) => {
       file: "",
       remindOnceInEvery: 5,
       autoreminder: false,
-      IsEnableOTP: "false",
+      IsEnableOTP: "true",
       IsTourEnabled: istourenabled,
       NotifyOnSignatures: notifySign,
       RedirectUrl: "",
