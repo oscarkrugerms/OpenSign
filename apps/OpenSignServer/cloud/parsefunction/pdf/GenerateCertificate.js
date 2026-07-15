@@ -44,7 +44,7 @@ export default async function GenerateCertificate(docDetails) {
   const generateAt = docDetails?.completedAt ? new Date(docDetails?.completedAt) : new Date();
   const generatedAtperTimezone = formatDateTime(generateAt, DateFormat, timezone, Is12Hr);
   const generatedUTCTime = generatedAtperTimezone;
-  const generatedOn = 'Generated On ' + generatedUTCTime;
+  const generatedOn = 'Gerado em ' + generatedUTCTime;
   const textWidth = timesRomanFont.widthOfTextAtSize(generatedOn, 12);
   const margin = 30;
   const maxX = width - margin - textWidth; // Ensures text stays inside the border with 30px margin
@@ -119,8 +119,8 @@ export default async function GenerateCertificate(docDetails) {
     color: rgb(0.12, 0.12, 0.12),
   });
 
-  page.drawText('Certificate of Completion', {
-    x: 160,
+  page.drawText('Certificado de Conclusão', {
+    x: 145,
     y: 755,
     size: title,
     font: timesRomanFont,
@@ -135,7 +135,7 @@ export default async function GenerateCertificate(docDetails) {
     thickness: 1,
   });
 
-  page.drawText('Summary', {
+  page.drawText('Resumo', {
     x: 30,
     y: 727,
     size: subtitle,
@@ -143,7 +143,7 @@ export default async function GenerateCertificate(docDetails) {
     color: titleColor,
   });
 
-  page.drawText('Document Id :', {
+  page.drawText('ID do documento:', {
     x: 30,
     y: 710,
     size: text,
@@ -152,14 +152,14 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   page.drawText(docDetails.objectId, {
-    x: 110,
+    x: 125,
     y: 710,
     size: text,
     font: timesRomanFont,
     color: textValueColor,
   });
 
-  page.drawText('Document Name :', {
+  page.drawText('Nome do documento:', {
     x: 30,
     y: 690,
     size: text,
@@ -168,7 +168,7 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   page.drawText(docDetails?.Name, {
-    x: 130,
+    x: 145,
     y: 690,
     size: docDetails?.Name?.length >= 78 ? 12 : text,
     font: timesRomanFont,
@@ -176,7 +176,7 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   if (documentHash) {
-    page.drawText('Document hash (sha256) :', {
+    page.drawText('Hash SHA-256:', {
       x: 30,
       y: 670,
       size: text,
@@ -185,7 +185,7 @@ export default async function GenerateCertificate(docDetails) {
     });
 
     page.drawText(documentHash, {
-      x: 170,
+      x: 115,
       y: 670,
       size: text,
       font: timesRomanFont,
@@ -202,7 +202,7 @@ export default async function GenerateCertificate(docDetails) {
   const emailY = nameY - 20;
   const ipY = emailY - 20;
 
-  page.drawText('Organization :', {
+  page.drawText('Organização:', {
     x: 30,
     y: organizationY,
     size: text,
@@ -211,13 +211,13 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   page.drawText(company, {
-    x: 110,
+    x: 105,
     y: organizationY,
     size: text,
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('Created on :', {
+  page.drawText('Criado em:', {
     x: 30,
     y: createdOnY,
     size: text,
@@ -226,13 +226,13 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   page.drawText(`${createdAtperTimezone}`, {
-    x: 97,
+    x: 95,
     y: createdOnY,
     size: text,
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('Completed on :', {
+  page.drawText('Concluído em:', {
     x: 30,
     y: completedOnY,
     size: text,
@@ -247,7 +247,7 @@ export default async function GenerateCertificate(docDetails) {
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('Signers :', {
+  page.drawText('Signatários:', {
     x: 30,
     y: signersY,
     size: text,
@@ -256,20 +256,20 @@ export default async function GenerateCertificate(docDetails) {
   });
 
   page.drawText(`${signersCount}`, {
-    x: 80,
+    x: 100,
     y: signersY,
     size: text,
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('Document originator', {
+  page.drawText('Remetente do documento', {
     x: 30,
     y: originatorHeaderY,
     size: 17,
     font: timesRomanFont,
     color: titleColor,
   });
-  page.drawText('Name :', {
+  page.drawText('Nome:', {
     x: 60,
     y: nameY,
     size: text,
@@ -283,7 +283,7 @@ export default async function GenerateCertificate(docDetails) {
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('Email :', {
+  page.drawText('E-mail:', {
     x: 60,
     y: emailY,
     size: text,
@@ -297,7 +297,7 @@ export default async function GenerateCertificate(docDetails) {
     font: timesRomanFont,
     color: textValueColor,
   });
-  page.drawText('IP address :', {
+  page.drawText('Endereço IP:', {
     x: 60,
     y: ipY,
     size: text,
@@ -305,7 +305,7 @@ export default async function GenerateCertificate(docDetails) {
     color: textKeyColor,
   });
   page.drawText(`${OriginIp}`, {
-    x: 125,
+    x: 135,
     y: ipY,
     size: text,
     font: timesRomanFont,
@@ -366,8 +366,8 @@ export default async function GenerateCertificate(docDetails) {
       currentPage = startNewPage();
     }
     const embedPng = x.Signature ? await pdfDoc.embedPng(x.Signature) : nasign;
-    const headerLabel = `${i + 1}. ${'Signer'}`;
-    const signedOnLabel = 'Signed on :';
+    const headerLabel = `${i + 1}. Signatário`;
+    const signedOnLabel = 'Assinado em:';
 
     currentPage.drawText(headerLabel, {
       x: 30,
@@ -376,7 +376,7 @@ export default async function GenerateCertificate(docDetails) {
       font: timesRomanFont,
       color: titleColor,
     });
-    currentPage.drawText('Name :', {
+    currentPage.drawText('Nome:', {
       x: 30,
       y: yPosition2,
       size: signertext,
@@ -392,14 +392,14 @@ export default async function GenerateCertificate(docDetails) {
     });
 
     if (IsEnableOTP) {
-      currentPage.drawText('Security level :', {
+      currentPage.drawText('Nível de segurança:', {
         x: half + 120,
         y: yPosition2,
         size: timeText,
         font: timesRomanFont,
         color: textKeyColor,
       });
-      currentPage.drawText('Email, OTP Auth', {
+      currentPage.drawText('E-mail + OTP', {
         x: half + 190,
         y: yPosition2,
         size: timeText,
@@ -408,7 +408,7 @@ export default async function GenerateCertificate(docDetails) {
       });
     }
 
-    currentPage.drawText('Email :', {
+    currentPage.drawText('E-mail:', {
       x: 30,
       y: yPosition3,
       size: signertext,
@@ -416,14 +416,14 @@ export default async function GenerateCertificate(docDetails) {
       color: textKeyColor,
     });
     currentPage.drawText(x?.Email || '', {
-      x: 75,
+      x: 80,
       y: yPosition3,
       size: signertext,
       font: timesRomanFont,
       color: textValueColor,
     });
 
-    currentPage.drawText('Viewed on :', {
+    currentPage.drawText('Visualizado em:', {
       x: 30,
       y: yPosition4,
       size: signertext,
@@ -431,7 +431,7 @@ export default async function GenerateCertificate(docDetails) {
       color: textKeyColor,
     });
     currentPage.drawText(`${formatDateStr(x?.ViewedOn, DateFormat, timezone, Is12Hr)}`, {
-      x: 97,
+      x: 120,
       y: yPosition4,
       size: signertext,
       font: timesRomanFont,
@@ -454,7 +454,7 @@ export default async function GenerateCertificate(docDetails) {
       color: textValueColor,
     });
 
-    currentPage.drawText('IP address :', {
+    currentPage.drawText('Endereço IP:', {
       x: 30,
       y: yPosition6,
       size: signertext,
@@ -462,14 +462,14 @@ export default async function GenerateCertificate(docDetails) {
       color: textKeyColor,
     });
     currentPage.drawText(x?.ipAddress || '', {
-      x: 95,
+      x: 110,
       y: yPosition6,
       size: signertext,
       font: timesRomanFont,
       color: textValueColor,
     });
 
-    currentPage.drawText('Signature :', {
+    currentPage.drawText('Assinatura:', {
       x: 30,
       y: yPosition7,
       size: signertext,
@@ -477,7 +477,7 @@ export default async function GenerateCertificate(docDetails) {
       color: textKeyColor,
     });
     currentPage.drawRectangle({
-      x: 98,
+      x: 100,
       y: yPosition7 - 30,
       width: 104,
       height: 44,

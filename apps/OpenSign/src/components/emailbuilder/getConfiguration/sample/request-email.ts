@@ -64,7 +64,7 @@ const getRequestEmail = (
         },
         props: {
           markdown: false,
-          text: "Digital Signature Request"
+          text: "Solicitação de assinatura eletrônica"
         }
       }
     },
@@ -83,7 +83,7 @@ const getRequestEmail = (
         },
         props: {
           contents:
-            "{{sender_name}} has requested you to review and sign <b>{{document_title}}</b>."
+            "{{sender_name}} solicitou que você revise e assine o documento <b>{{document_title}}</b>."
         }
       }
     },
@@ -314,7 +314,7 @@ const getRequestEmail = (
           }
         },
         props: {
-          contents: `This is an automated email from ${appName}. For any queries regarding this email, please contact the sender <a href="mailto:{{sender_mail}}" target="_blank">{{sender_mail}}</a> directly.`
+          contents: `Esta é uma mensagem automática de ${appName}. Em caso de dúvida sobre este e-mail, entre em contato diretamente com o remetente <a href="mailto:{{sender_mail}}" target="_blank">{{sender_mail}}</a>.`
         }
       }
     }

@@ -38,10 +38,10 @@ const MailTemplateEditor = ({
     request: "basic",
     completion: "basic"
   });
-  const defaultRequestSubject = `{{sender_name}} has requested you to sign {{document_title}}`;
-  const defaultRequestBody = `<p>Hi {{receiver_name}},</p><br><p>We hope this email finds you well. {{sender_name}}&nbsp;has requested you to review and sign&nbsp;{{document_title}}.</p><p>Your signature is crucial to proceed with the next steps as it signifies your agreement and authorization.</p><br><p><a href='{{signing_url}}' rel='noopener noreferrer' target='_blank'>Sign here</a></p><br><br><p>If you have any questions or need further clarification regarding the document or the signing process, please contact the sender.</p><br><p>Thanks</p><p> Team ${appName}</p><br>`;
-  const defaultCompletionSubject = `Document {{document_title}} has been signed by all parties`;
-  const defaultCompletionBody = `<p>Hi {{sender_name}},</p><br><p>All parties have successfully signed the document {{document_title}}. Kindly download the document from the attachment.</p><br><p>Thanks</p><p> Team ${appName}</p><br>`;
+  const defaultRequestSubject = `{{sender_name}} solicitou sua assinatura no documento {{document_title}}`;
+  const defaultRequestBody = `<p>Olá, {{receiver_name}}.</p><br><p>{{sender_name}} solicitou que você revise e assine o documento&nbsp;{{document_title}}.</p><p>Sua assinatura registra sua concordância com o documento e permite a continuidade do procedimento.</p><br><p><a href='{{signing_url}}' rel='noopener noreferrer' target='_blank'>Assinar documento</a></p><br><br><p>Em caso de dúvida sobre o documento ou o processo de assinatura, entre em contato com o remetente.</p><br><p>Atenciosamente,</p><p>Equipe ${appName}</p><br>`;
+  const defaultCompletionSubject = `Assinatura do documento {{document_title}} concluída por todos os signatários`;
+  const defaultCompletionBody = `<p>Olá, {{sender_name}}.</p><br><p>Todos os signatários concluíram a assinatura do documento {{document_title}}. O documento assinado está disponível no anexo.</p><br><p>Atenciosamente,</p><p>Equipe ${appName}</p><br>`;
   const cloudfunction =
         "updatetenant";
 
@@ -66,7 +66,7 @@ const MailTemplateEditor = ({
       alert(t("user-not-exist"));
     } else if (tenantRes) {
       const updateRes = tenantRes;
-      const defaultRequestBody = `<p>Hi {{receiver_name}},</p><br><p>We hope this email finds you well. {{sender_name}}&nbsp;has requested you to review and sign&nbsp;{{document_title}}.</p><p>Your signature is crucial to proceed with the next steps as it signifies your agreement and authorization.</p><br><p><a href='{{signing_url}}' rel='noopener noreferrer' target='_blank'>Sign here</a></p><br><br><p>If you have any questions or need further clarification regarding the document or the signing process, please contact the sender.</p><br><p>Thanks</p><p> Team ${appName}</p><br>`;
+      const defaultRequestBody = `<p>Olá, {{receiver_name}}.</p><br><p>{{sender_name}} solicitou que você revise e assine o documento&nbsp;{{document_title}}.</p><p>Sua assinatura registra sua concordância com o documento e permite a continuidade do procedimento.</p><br><p><a href='{{signing_url}}' rel='noopener noreferrer' target='_blank'>Assinar documento</a></p><br><br><p>Em caso de dúvida sobre o documento ou o processo de assinatura, entre em contato com o remetente.</p><br><p>Atenciosamente,</p><p>Equipe ${appName}</p><br>`;
       if (updateRes?.RequestBody) {
         setRequestBody((p) => ({
           ...p,

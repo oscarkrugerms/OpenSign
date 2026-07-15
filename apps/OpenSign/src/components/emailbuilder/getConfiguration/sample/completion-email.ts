@@ -62,7 +62,7 @@ const getCompletionEmail = (
         },
         props: {
           markdown: false,
-          text: "Document signed successfully\n\n"
+          text: "Assinatura concluída com sucesso\n\n"
         }
       }
     },
@@ -230,7 +230,7 @@ const getCompletionEmail = (
           }
         },
         props: {
-          contents: `This is an automated email from ${appName}. For any queries regarding this email, please contact the sender <a href="mailto:{{sender_mail}}" target="_blank">{{sender_mail}}</a> directly.`
+          contents: `Esta é uma mensagem automática de ${appName}. Em caso de dúvida sobre este e-mail, entre em contato diretamente com o remetente <a href="mailto:{{sender_mail}}" target="_blank">{{sender_mail}}</a>.`
         }
       }
     },
@@ -249,7 +249,7 @@ const getCompletionEmail = (
         },
         props: {
           contents:
-            'All parties have successfully signed the document "<b>{{document_title}}</b>". Kindly download the document from the attachment.'
+            'Todos os signatários concluíram a assinatura do documento "<b>{{document_title}}</b>". O documento assinado está disponível no anexo.'
         }
       }
     }
